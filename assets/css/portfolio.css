@@ -1,0 +1,141 @@
+*{
+    margin: 0;
+} 
+
+.head .h2{
+    text-align:left;
+    padding-top:70px;
+    color: white;
+    padding-bottom:20px;
+    padding-left:110px;
+} 
+.h2{
+    color: white;
+    margin-top:-20px;
+}
+.tech-card {
+    background-image: url(../img/Group\ meetings.jpeg);
+    width: 100%;
+    height: 400px; /* Set the height to 300px */
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-position: center; /* Centers the image within the element */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    /* opacity: 30%; */
+}
+ 
+.tech{
+    background-color: white;
+    border-radius: 3px;
+    padding:15px 50px;
+} 
+
+.tech p{
+    font-weight: bold;
+    text-align: center;
+    padding-top:10px ;
+}
+
+
+.technologies-1{
+    margin:40px ;
+    
+}  
+
+.technologies-2{
+    margin:1+0px ;
+    
+} 
+
+
+
+.bg-color{
+    background-color: 1E1E1E;
+} 
+
+.d-flex {
+    display: flex;
+    flex-wrap: wrap; /* Ensures items wrap to the next line */
+    gap: 20px;       /* Adds spacing between items */
+}
+
+
+.col-lg-4, .col-md-6 {
+    flex: 1 1 calc(33.333% - 20px); /* Adjusts size for a three-column layout */
+    max-width: calc(33.333% - 20px); /* Ensures consistent width */
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .col-lg-4, .col-md-6 {
+        flex: 1 1 calc(50% - 20px); /* Two columns on smaller screens */
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 576px) {
+    .col-lg-4, .col-md-6 {
+        flex: 1 1 100%; /* Single column on the smallest screens */
+        max-width: 100%;
+    }
+}
+
+
+/* Projects css Start  */ 
+
+.home3-blog-area {
+    display: flex; /* Makes the container a flexbox */
+    align-items: center; /* Aligns items vertically center */
+    justify-content: space-between; /* Adds space between image and text */
+    gap: 20px; /* Adds spacing between elements */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    padding-top:70px;
+}
+
+.aside1 {
+    flex: 1 1 40%; /* Allocates 40% width for the image section */
+    text-align: center; /* Centers the image horizontally */
+}
+
+.aside1 img {
+    max-width: 100%; /* Ensures the image is responsive */
+    height: auto; /* Maintains the aspect ratio */
+    border-radius: 3%;
+}
+
+.aside2 {
+    flex: 1 1 50%; /* Allocates 50% width for the text section */
+    padding: 20px; /* Adds padding for better spacing */
+    color:white;
+}
+
+.aside2 h1 {
+    font-size: 4rem; /* Makes the heading prominent */
+    margin-bottom: 15px; /* Adds spacing below the heading */
+}
+
+.aside2 p {
+    font-size: 1rem; /* Ensures readability */
+    line-height: 1.6; /* Improves line spacing for readability */
+    color: #333; /* Neutral text color for better contrast */
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .home3-blog-area {
+        flex-direction: column; /* Stacks elements vertically */
+        gap: 30px; /* Adds spacing between stacked elements */
+    }
+
+    .aside1, .aside2 {
+        flex: 1 1 100%; /* Full width for both sections */
+    }
+
+    .aside2 h1 {
+        text-align: center; /* Centers the heading on smaller screens */
+    }
+
+    .aside2 p {
+        text-align: justify; /* Justifies the text for better alignment */
+    }
+}
+
