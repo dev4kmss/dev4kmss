@@ -1,0 +1,23 @@
+/* Main section styling */
+.home3-about-section {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: flex-start; /* Align content to the left */
+    align-items: center; /* Vertically center */
+    text-align: left; /* Ensure text aligns to the left */
+}
+
+/* Flex layout for the content */
+.content-row {
+    display: flex; /* Enables left-to-right arrangement */
+    gap: 20px; /* Add spacing between items */
+    flex-wrap: wrap; /* Wrap text on smaller screens */
+}
+
+.content-row p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 0; /* Remove default paragraph margin */
+    /* Removed white-space: nowrap; to allow wrapping */
+}
+

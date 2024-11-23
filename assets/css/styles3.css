@@ -1,0 +1,65 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #0e0101;
+  }
+  
+  /* Section Styling */
+  .section {
+    padding: 50px 0;
+    background-color: #100f0f;
+    text-align: center;
+  }
+  
+  /* Card Container */
+  .card-container {
+    color: #fff; /* Ensure container inherits white color */
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Increased spacing between cards */
+    flex-wrap: wrap; /* To make it responsive */
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Restrict the width */
+  }
+  
+  /* Card Styling */
+  .card {
+    background: #0e0d0d;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px; /* Increased padding for more spacing */
+    width: 450px; /* Adjusted width for better alignment */
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px); /* Adds a slight lift effect */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Icon Styling */
+  .icon img {
+    margin-bottom: 20px; /* Increased spacing */
+    width: 80px; /* Slightly larger icons */
+    height: 80px;
+  }
+  
+  /* Card Heading */
+  .card h3 {
+    font-size: 1.8em; /* Slightly larger heading */
+    margin-bottom: 15px;
+    color: #fff; /* Set heading color to white */
+  }
+  
+  /* Card Text */
+  .card p {
+    font-size: 1em; /* Slightly larger font for readability */
+    color: #fff; /* Set paragraph text color to white */
+    line-height: 1.8;
+  }
+  
+  

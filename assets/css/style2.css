@@ -200,7 +200,7 @@ video {
   font-size: 40px;
   line-height: 60px;
   text-transform: capitalize;
-  color: var(--white-color);
+  color: white;
   margin-bottom: 7px;
 }
 .section-title-3 p {
@@ -9606,7 +9606,7 @@ footer .footer-btm .footer-btn-content .footer-social ul li a:hover {
   font-size: 15px;
   line-height: 32px;
   letter-spacing: 0.03em;
-  color: #B5B5B5;
+  color: #f2ecec;
   margin-bottom: 0;
 }
 .service-details .about-content .about-featue {
@@ -11092,4 +11092,13 @@ footer .footer-btm .footer-btn-content .footer-social ul li a:hover {
 .fancybox-navigation {
   display: none;
   visibility: hidden;
-}/*# sourceMappingURL=style2.css.map */
+}/*# sourceMappingURL=style2.css.map */ 
+
+/* Index */
+.heading {
+color: white !important;
+}  
+
+.heading p{
+  color: #B5B5B5!important;
+  } 
