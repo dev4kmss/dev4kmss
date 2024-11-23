@@ -66,13 +66,14 @@ body {
 h1,
 h2,
 h3,
-h4,
 h5,
 h6 {
     font-family: var(--font-saira);
     font-weight: 700;
     margin-bottom: 15px;
-}
+} 
+
+
 
 img {
     max-width: 100%;
@@ -6118,14 +6119,16 @@ video {
             .blog-img{
                 img{
                     transform: scale(1.05);
-                }
+                } 
+
             }
             .blog-content{
                 background: #292929;      
             } 
         }
     }
-}
+} 
+
 
 // home 5
 .home5-about-area{
@@ -7210,7 +7213,8 @@ video {
             }
         }
     }
-}
+} 
+
 
 
 // footer
