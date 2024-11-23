@@ -29,6 +29,7 @@
     <!-- Title -->
     <title>KMSS- krishnamurthy software solutions pvt ltd</title>
     <link rel="icon" href="assets/img/sm-logo.png" type="image/gif" sizes="20x20">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="home-dark2 tt-magic-cursor">
@@ -351,7 +352,7 @@
                     <div class="contact-content">
                         <span>CONTACT WITH US</span>
                         <h2>LET’S WORK TOGETHER?</h2>
-                        <p>I have worls-class, flexible support via live chat, email and hone. I guarantee that you’ll be able to have any issue resolved within 24 hours.</p>
+                        <p>"Get in touch with us today! Whether you have questions, need assistance, or want to collaborate, our world-class support team is here to help. Reach out via email, or phone, and we promise to resolve your queries within 24 hours. Let’s work together to achieve your goals!"</p>
                         <div class="informations">
                             <div class="single-info">
                                 <div class="icon">
@@ -401,36 +402,37 @@
                             <h5>Make a Free Consulting</h5>
                         </div>
                        <div class="contact-form">
-                        <form>
+                        <form id="myForm">
                             <div class="row">
                                 <div class="col-md-6 mb-20">
                                     <div class="form-inner">
+                                        
                                         <label>first name</label>
-                                        <input type="text">
+                                        <input type="text" id="firstName">
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-20">
                                     <div class="form-inner">
                                         <label>Last name</label>
-                                        <input type="text">
+                                        <input type="text" id="lastName">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-20">
                                     <div class="form-inner">
                                         <label>Company/Organization</label>
-                                        <input type="text">      
+                                        <input type="text" id="company">      
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-20">
                                     <div class="form-inner">
                                         <label>Email</label>
-                                        <input type="email">
+                                        <input type="email" id="email">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-20">
                                     <div class="form-inner">
                                         <label>Phone</label>
-                                        <input type="email">
+                                        <input type="phone number" id="phone">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mb-20">
@@ -446,8 +448,8 @@
                                 </div>
                                 
                             </div>
-                        </form>
-                       </div>
+                        </form>                     
+                      </div>
                     </div>
                 </div>
             </div>
@@ -591,7 +593,7 @@
                     <div class="col-lg-12">
                         <div class="footer-btn-content">
                             <div class="copyright-area">
-                                <p>©Copyright 2023 <a href="#">KMSS</a></p>
+                                <p>©Copyright 2024 <a href="#">KMSS</a></p>
                             </div>
                             <div class="footer-social">
                                 <ul>
@@ -637,6 +639,9 @@
     <script src="assets/js/preloader.js"></script>
     <script src="assets/js/custom.js"></script>
 
+    
+    <!-- form submiting JS -->
+     <script src="/formHandler.js"></script>
 
 </body>
 
