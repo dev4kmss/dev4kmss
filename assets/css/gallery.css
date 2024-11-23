@@ -63,7 +63,7 @@
   }
   
 
-Container styling for the headings
+/* Container styling for the headings */
 .headings-container {
     display: flex;
     justify-content: space-around; /* Ensures equal space around the headings */
