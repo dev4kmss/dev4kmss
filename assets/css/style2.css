@@ -5038,6 +5038,7 @@ video {
 .home3-success-stories-area .success-storie-card .success-img img {
   border-radius: 5px;
   width: 100%;
+  height:400px;
 }
 .home3-success-stories-area .success-storie-card .success-content {
   position: absolute;
@@ -8920,7 +8921,10 @@ footer .footer-btm .footer-btn-content .footer-social ul li a:hover {
   justify-content: center;
 }
 .breadcrumbs .breadcrumb-wrapper .breadcrumb-cnt .breadcrumb-list a {
-  color: var(--theme-color);
+  color: white;
+} 
+.breadcrumbs .breadcrumb-wrapper .breadcrumb-cnt .breadcrumb-list .active {
+  color: var(--theme-color)
 }
 .breadcrumbs .breadcrumb-wrapper .breadcrumb-cnt .breadcrumb-list i {
   margin: 0 5px;
@@ -10568,7 +10572,8 @@ footer .footer-btm .footer-btn-content .footer-social ul li a:hover {
   top: 0;
   right: 0;
 }
-.blog-masonary-area .single-blog .blog-img .blog-tag a {
+.blog-masonary-area .single-blog .
+ .blog-tag a {
   font-family: var(--font-saira);
   font-weight: 600;
   font-size: 13px;
@@ -11094,6 +11099,7 @@ footer .footer-btm .footer-btn-content .footer-social ul li a:hover {
   visibility: hidden;
 }/*# sourceMappingURL=style2.css.map */ 
 
+<<<<<<< HEAD
 /* Index */
 .heading {
 color: white !important;
@@ -11102,3 +11108,11 @@ color: white !important;
 .heading p{
   color: #B5B5B5!important;
   } 
+=======
+
+/* Services */
+
+.head-1{
+  color:white;
+}
+>>>>>>> 8e2904da7888bea1995e8b6985d14062e266dceb
