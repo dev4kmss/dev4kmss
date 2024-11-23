@@ -6,7 +6,7 @@
   
   #gallery h2 {
     font-size: 28px;
-    color: #007bff;
+    color: #0e7845;
     margin-bottom: 10px;
   }
   
@@ -63,7 +63,7 @@
   }
   
 
-/* Container styling for the headings */
+Container styling for the headings
 .headings-container {
     display: flex;
     justify-content: space-around; /* Ensures equal space around the headings */
