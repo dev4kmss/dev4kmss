@@ -1,0 +1,54 @@
+.how-we-work-section {
+    background-color: #0c0b0b;
+    padding: 50px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #f5f2f2;
+    margin-bottom: 30px;
+}
+
+.work-card {
+    background-color: #0f0101;
+    border: none;
+    justify-content: center; /* Centers cards horizontally */
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    color: #FFFFFF;
+}
+
+.work-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.work-icon {
+    color: #04220b;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 15px;
+
+}
+
+
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color:white;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: #B5B5B5;
+    line-height: 1.5;
+
+
+
+}
