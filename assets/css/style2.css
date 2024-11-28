@@ -7266,7 +7266,7 @@ footer .footer-top {
 }
 footer .footer-top .footer-top-content {
   display: flex;
-  align-items: center;
+  /* align-items: ; */
   justify-content: space-between;
   padding: 25px 0px;
 }
