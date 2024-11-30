@@ -412,7 +412,7 @@ video {
 }
 @media (max-width: 1700px) {
   .header-area2 {
-    padding: 0px 7%;
+    padding: 0px 10%;
   }
 }
 @media (max-width: 1500px) {
@@ -1580,9 +1580,9 @@ video {
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
-  min-height: 100vh;
+  min-height:100vh;
   z-index: 1;
-  height:auto;
+  height:500px;
 }
 .banner-area3::before {
   content: "";
@@ -1708,7 +1708,7 @@ video {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 215px 0 130px 180px;
+  padding: 215px 0 100px 180px;
   position: relative;
 }
 @media (max-width: 1750px) {
@@ -8799,6 +8799,7 @@ footer .footer-btm .footer-btn-content .footer-social ul li a:hover {
   background-size: cover;
   background-repeat: no-repeat;
   z-index: 1;
+  
 }
 .breadcrumbs .inner-banner-1 {
   border-radius: 130px;
@@ -8829,6 +8830,7 @@ footer .footer-btm .footer-btn-content .footer-social ul li a:hover {
   position: absolute;
   bottom: 130px; /*changed*/
   right: -480px;  /*changed*/
+  
   border-radius: 130px 130px 0px 0px;
 }
 @media (max-width: 991px) {
@@ -8866,7 +8868,8 @@ footer .footer-btm .footer-btn-content .footer-social ul li a:hover {
   text-align: center;
   top:-170px;  /*changed*/
   right:-260px;  /*changed*/
-}
+} 
+
 .breadcrumbs .breadcrumb-wrapper .breadcrumb-cnt > span {
   font-family: var(--font-saira);
   font-weight: 500;
