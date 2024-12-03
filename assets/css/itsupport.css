@@ -33,6 +33,16 @@
   box-sizing: border-box;
 }
 
+.d-flex {
+  display: flex; 
+  
+}
+
+
+
+.devider{
+  margin-top:50px;
+}
 a:focus,
 input:focus,
 textarea:focus,

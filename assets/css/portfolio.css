@@ -2,17 +2,8 @@
     margin: 0;
 } 
 
-.head .h2{
-    text-align:left;
-    padding-top:70px;
-    color: white;
-    padding-bottom:20px;
-    padding-left:110px;
-} 
-.h2{
-    color: white;
-    margin-top:-20px;
-}
+
+
 .tech-card {
     background-image: url(../img/Group\ meetings.jpeg);
     width: 100%;
@@ -20,13 +11,13 @@
     background-size: cover; /* Ensures the image covers the entire area */
     background-position: center; /* Centers the image within the element */
     background-repeat: no-repeat; /* Prevents the image from repeating */
-    /* opacity: 30%; */
+    /* opacity: 20%; */
 }
  
 .tech{
     background-color: white;
     border-radius: 3px;
-    padding:15px 50px;
+    padding:10px 20px;
 } 
 
 .tech p{
@@ -37,12 +28,12 @@
 
 
 .technologies-1{
-    margin:40px ;
+    margin:20px ;
     
 }  
 
 .technologies-2{
-    margin:1+0px ;
+    margin:10px ;
     
 } 
 
