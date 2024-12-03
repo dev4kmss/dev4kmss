@@ -88,7 +88,7 @@
     justify-content: space-between; /* Adds space between image and text */
     gap: 20px; /* Adds spacing between elements */
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
-    padding-top:70px;
+    padding-top:30px;
 }
 
 .aside1 {
