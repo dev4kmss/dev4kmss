@@ -3,12 +3,16 @@
       <div class="banner-area3">
         
         <!-- <div class="swiper-pagination1"></div> -->
-        <div class="social-area">
+                <div class="social-area">
             <ul>
-                <li><a href="https://www.facebook.com/"><i class='bx bxl-facebook'></i></a></li>
-                <li><a href="https://twitter.com/"><i class='bx bxl-twitter'></i></a></li>
-                <li><a href="https://www.linkedin.com/company/krishnamurthy-software-solutions-pvt-ltd"><i class="bx bxl-linkedin"></i></a></li>
-                <li><a href="https://www.instagram.com/"><i class='bx bxl-instagram'></i></a></li>
+                <li><a href="https://www.linkedin.com/company/krishnamurthy-software-solutions-pvt-ltd" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
+                <li>
+                    <a href="https://wa.me/7676002107?text=Hello%20I%20want%20to%20know%20more!" target="_blank">
+                        <i class="bx bxl-whatsapp"></i>
+                    </a>
+                </li>
+                <!-- <li><a href="https://www.facebook.com/"><i class='bx bxl-facebook'></i></a></li> -->
+                <!-- <li><a href="https://www.instagram.com/"><i class='bx bxl-instagram'></i></a></li> -->
             </ul>
         </div>
    
@@ -28,7 +32,7 @@
 
                                 <ul>
                                     <li><a href="services-webdevelopment.html">Web Development</a></li>
-                                    <li><a href="services-webdevelopment.html">Mobile Development</a></li>
+                                    <li><a href="services-mobiledevelopement.html">Mobile Development</a></li>
                                     <li><a href="services-cloud.html">Cloud Services</a></li>
                                     <!-- <li><a href="service.html">Network Connectivity</a></li> -->
                                     <li><a href="services-dataanalytics.html">Data analytics</a></li>
