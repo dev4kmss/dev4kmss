@@ -3854,6 +3854,7 @@ video {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  object-fit: cover;
 }
 .home4-testimonial-section .testimonial-card4 .testimonial-top .author-area .author-content h4 {
   font-family: var(--font-saira);
