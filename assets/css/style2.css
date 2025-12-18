@@ -5826,6 +5826,7 @@ video {
 }
 .home3-team-area .experts-card .experts-content {
   padding-top: 22px;
+  text-align: justify;
 }
 .home3-team-area .experts-card .experts-content h4 {
   font-family: var(--font-saira);
@@ -9589,6 +9590,8 @@ footer .footer-btm .footer-btn-content .footer-social ul li a:hover {
 
 .service-details .about-content .section-title-5 {
   margin-bottom: 20px;
+  text-align: justify;
+
 }
 .service-details .about-content .section-title-5 h2 {
   font-size: 55px;
@@ -9616,6 +9619,7 @@ footer .footer-btm .footer-btn-content .footer-social ul li a:hover {
   letter-spacing: 0.03em;
   color: #f2ecec;
   margin-bottom: 0;
+  text-align: justify;
 }
 .service-details .about-content .about-featue {
   margin: 0;

@@ -1546,6 +1546,7 @@ video {
   transition: all 0.5s ease;
 }
 .header-sidebar .follow-area {
+  margin-bottom: 100px;
   padding: 30px 0px;
 }
 .header-sidebar .follow-area h5 {
@@ -5287,6 +5288,7 @@ video {
   margin-bottom: 28px;
 }
 .home3-testimonil-area .testimonial-card3 .testimonial-content p {
+  text-align: justify;
   font-family: var(--font-saira);
   font-weight: 300;
   font-size: 16px;

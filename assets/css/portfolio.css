@@ -109,6 +109,7 @@
     line-height: 1.6; /* Improves line spacing for readability */
     color: #333; /* Neutral text color for better contrast */
     color: white;
+    text-align: justify;
 }
 
 @media (max-width: 768px) {
