@@ -392,7 +392,7 @@
                 formData.append("orgId", "752");
                 formData.append("recruiterId", "1");
                 // Matching the curl's specific 'profile' blob requirement
-                formData.append("profile", new Blob(["undefined"], { type: "application/json" }), "blob");
+                formData.append("profile", new Blob([JSON.stringify({})], { type: "application/json" }), "blob");
                 formData.append("userResume", resumeFile);
 
                 try {
