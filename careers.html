@@ -406,60 +406,207 @@
         </div>
     </div>
 
+    <style>
+        .premium-job-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2ea673, #157347);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .premium-job-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(46, 166, 115, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .premium-job-card:hover::before {
+            opacity: 1;
+        }
+
+        .job-card-header {
+            margin-bottom: 20px;
+        }
+
+        .job-role {
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .meta-badge {
+            background: rgba(255, 255, 255, 0.05);
+            color: #a0a0a0;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta-badge i {
+            font-size: 0.9rem;
+            color: #2ea673;
+        }
+
+        .job-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .skill-tag {
+            font-size: 0.75rem;
+            color: #2ea673;
+            background: rgba(46, 166, 115, 0.1);
+            padding: 2px 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(46, 166, 115, 0.2);
+        }
+
+        .apply-btn-wrapper {
+            margin-top: auto;
+        }
+
+        .premium-apply-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #2ea673;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .premium-apply-btn:hover {
+            background: #157347;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(46, 166, 115, 0.3);
+        }
+    </style>
+
     <script>
-        const apiURL = "https://pioneercoders.krishnamurthyedtechapi.com/api/v1/352/job/search?size=50&page=0";
+        const apiURL = "https://pioneercoders.krishnamurthyedtechapi.com/api/v1/752/job/search?size=50&page=0";
 
-        fetch(apiURL, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer "
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                const jobs = data.data || [];
-                const container = document.getElementById("jobsContainer");
-                const status = document.getElementById("jobsStatus");
 
-                if (jobs.length === 0) {
-                    status.textContent = "No job openings available.";
+        async function fetchJobs() {
+            const container = document.getElementById("jobsContainer");
+            const status = document.getElementById("jobsStatus");
+
+            try {
+                const response = await fetch(apiURL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json, text/plain, */*",
+
+                        "Origin": "https://pioneercodershiringhub.com",
+                        "Referer": "https://pioneercodershiringhub.com/"
+                    },
+                    body: JSON.stringify({ "role": "" })
+                });
+
+                if (!response.ok) throw new Error("Failed to fetch jobs");
+
+                const result = await response.json();
+                
+                // Handling both potential structures: data: { content: [...] } or data: [...]
+                const jobs = (result.data && result.data.content) || result.data || [];
+
+                if (!jobs || jobs.length === 0) {
+                    status.innerHTML = `
+                        <div class="no-jobs" style="text-align:center; width:100%;">
+                            <i class="bi bi-briefcase" style="font-size: 3rem; color: #555;"></i>
+                            <p style="margin-top: 20px;">No job openings available at the moment. Please check back later!</p>
+                        </div>
+                    `;
                     return;
                 }
 
                 status.style.display = "none";
+                container.innerHTML = ""; // Clear loader
 
                 jobs.forEach(job => {
+                    const skills = Array.isArray(job.skills) ? job.skills.slice(0, 3) : [];
+                    const skillTags = skills.map(s => `<span class="skill-tag">${s}</span>`).join('');
+                    
                     container.innerHTML += `
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="single-blog magnetic-item" style="height:100%;">
-                        <div class="blog-img">
-                            <img src="assets/img/SDE.png" alt="${job.role}">
-                        </div>
-                        <div class="blog-content">
-                            <h4><a href="apply.html?id=${job.id}">${job.role}</a></h4>
-                            <p style="margin:0; color:#777">${job.location}</p>
-                            <p style="margin:0; color:#777">Experience: ${job.experience}</p>
-
-                            <div class="blog-footer">
-                                <div class="read-btn">
-                                    <a href="apply.html?id=${job.id}">Apply
-                                        <svg width="12" height="12" viewBox="0 0 13 13">
-                                            <path d="M0 1H12M12 1V13M12 1L0.5 12"></path>
-                                        </svg>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="premium-job-card">
+                                <div class="job-card-header">
+                                    <div class="job-role">${job.role}</div>
+                                    <div class="job-meta">
+                                        <div class="meta-badge">
+                                            <i class="bi bi-geo-alt"></i> ${job.location || 'Remote'}
+                                        </div>
+                                        <div class="meta-badge">
+                                            <i class="bi bi-briefcase"></i> ${job.experience || 'Fresher'}
+                                        </div>
+                                    </div>
+                                    <div class="job-skills">
+                                        ${skillTags}
+                                        ${job.skills?.length > 3 ? `<span class="skill-tag">+${job.skills.length - 3} more</span>` : ''}
+                                    </div>
+                                </div>
+                                <div class="apply-btn-wrapper">
+                                    <a href="apply.html?id=${job.id}" target="_blank" class="premium-apply-btn">
+                                        View Details & Apply
+                                        <i class="bi bi-arrow-right"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                    </div> 
-                </div>
-            `;
+                    `;
                 });
-            })
-            .catch(err => {
-                document.getElementById("jobsStatus").textContent = "Failed to load job openings.";
-                console.error(err);
-            });
+            } catch (err) {
+                console.error("Fetch Error:", err);
+                status.innerHTML = `
+                    <div class="error-state" style="text-align:center; width:100%;">
+                        <i class="bi bi-exclamation-triangle" style="font-size: 3rem; color: #dc3545;"></i>
+                        <p style="margin-top: 20px; color: #dc3545;">Failed to load job openings. Please try refreshing the page.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize fetch
+        fetchJobs();
     </script>
 
 
