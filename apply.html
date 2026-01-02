@@ -192,7 +192,7 @@
     <!-- End header section -->
 
     <!-- Start Banner section -->
-    <div class="banner-area3">
+    <!-- <div class="banner-area3">
         <div class="social-area">
             <ul>
                 <li><a href="https://www.linkedin.com/company/krishnamurthy-software-solutions-pvt-ltd" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
@@ -242,16 +242,70 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- End Banner section -->
 
     <!-- APPLY JOB SECTION START -->
-    <div class="home3-blog-area sec-mar">
-        <div class="heading" data-wow-delay="200ms" data-wow-duration="1500ms" style="padding-left:110px;">
-            <h2>Apply for this Job</h2>
+    <div class="apply-job-area sec-mar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="job-details-wrapper">
+                        <div class="job-header mb-40">
+                            <h2 id="jobRole">Loading Job...</h2>
+                            <div class="job-meta d-flex gap-4 mt-3">
+                                <span><i class="bi bi-geo-alt"></i> <span id="jobLocation">...</span></span>
+                                <span><i class="bi bi-briefcase"></i> <span id="jobExperience">...</span></span>
+                                <span><i class="bi bi-person-check"></i> <span id="jobRounds">...</span></span>
+                            </div>
+                        </div>
+
+                        <div class="job-description mb-40">
+                            <h3>Description</h3>
+                            <p id="jobDescription">...</p>
+                        </div>
+
+                        <div class="job-skills mb-40">
+                            <h3>Key Skills</h3>
+                            <div id="jobSkills" class="d-flex flex-wrap gap-2">
+                                <!-- Skills will be injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="apply-form-card p-4 shadow-sm rounded bg-dark border">
+                        <h3 class="mb-4 text-white">Apply Now</h3>
+                        <form id="applyForm">
+                            <div class="mb-3">
+                                <label class="form-label text-white">Upload Resume (PDF)</label>
+                                <input type="file" id="userResume" class="form-control bg-transparent text-white border-secondary" accept=".pdf" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 mt-2">Submit Application</button>
+                        </form>
+                        <div id="formStatus" class="mt-3 text-success"></div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <style>
+        .apply-job-area { padding: 80px 0; }
+        .job-details-wrapper h2 { font-size: 36px; color: #fff; margin-bottom: 20px; }
+        .job-meta span { color: #aaa; font-size: 16px; }
+        .job-meta i { color: #2ea673; margin-right: 5px; }
+        .job-description h3, .job-skills h3 { color: #fff; margin-bottom: 15px; font-size: 24px; }
+        .job-description p { color: #ccc; line-height: 1.8; }
+        #jobSkills span { background: rgba(46, 166, 115, 0.1); color: #2ea673; padding: 5px 15px; border-radius: 20px; border: 1px solid #2ea673; }
+        .apply-form-card { background: #1a1a1a !important; }
+        .form-control:focus { background-color: transparent; border-color: #2ea673; box-shadow: none; color: white; }
+    </style>
         <script>
-            const apiURL = "https://pioneercoders.krishnamurthyedtechapi.com/api/v1/352/job/search?size=50&page=0";
+            const apiURL = "https://pioneercoders.krishnamurthyedtechapi.com/api/v1/752/job/search?size=50&page=0";
+
 
             const params = new URLSearchParams(window.location.search);
             const jobId = params.get("id");
@@ -263,49 +317,111 @@
             const roundEl = document.getElementById("jobRounds");
             const descEl = document.getElementById("jobDescription");
 
-            fetch(apiURL, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer YOUR_TOKEN_HERE"
-                }
-            })
-                .then(res => res.json())
-                .then(data => {
-                    const jobs = data.data || [];
+            async function fetchJobDetails() {
+                try {
+                    const response = await fetch(apiURL, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json, text/plain, */*",
+
+                            "Origin": "https://pioneercodershiringhub.com",
+                            "Referer": "https://pioneercodershiringhub.com/"
+                        },
+                        body: JSON.stringify({ "role": "" })
+                    });
+
+                    if (!response.ok) throw new Error("Failed to fetch jobs");
+
+                    const result = await response.json();
+                    const jobs = (result.data && result.data.content) || result.data || [];
                     const job = jobs.find(j => String(j.id) === String(jobId));
 
                     if (!job) {
                         roleEl.innerText = "Job not found";
-                        //locEl.innerText = "—";
-                        //expEl.innerText = "—";
-                        //skillEl.innerText = "—";
-                        //roundEl.innerText = "—";
-                        //descEl.innerText = "No description available.";
                         return;
                     }
 
                     roleEl.innerText = job.role;
-                    locEl.innerText = job.location;
-                    expEl.innerText = job.experience;
-                    skillEl.innerText = job.skills.join(", ");
-
-                    if (job.interviewRounds && job.interviewRounds.length > 0) {
-                        roundEl.innerText = `${job.interviewRounds.length} Round (${job.interviewRounds[0].type})`;
+                    locEl.innerText = job.location || "Remote";
+                    expEl.innerText = job.experience || "Fresher";
+                    
+                    if (job.skills && Array.isArray(job.skills)) {
+                        skillEl.innerHTML = job.skills.map(s => `<span>${s}</span>`).join("");
                     } else {
-                        roundEl.innerText = "—";
+                        skillEl.innerHTML = "<span>No specific skills listed</span>";
                     }
 
-                    descEl.innerText = job.description || "No description provided.";
-                })
-                .catch(err => {
-                    console.error(err);
-                    roleEl.innerText = "Failed to load job details";
-                });
+                    if (job.numOfRounds) {
+                        roundEl.innerText = `${job.numOfRounds} Rounds`;
+                    } else if (job.interviewRounds && job.interviewRounds.length > 0) {
+                        roundEl.innerText = `${job.interviewRounds.length} Rounds`;
+                    } else {
+                        roundEl.innerText = "Standard Rounds";
+                    }
 
-            document.getElementById("applyForm").addEventListener("submit", function (e) {
+                    // Format description with preserve newlines
+                    if (job.description) {
+                        descEl.style.whiteSpace = "pre-wrap";
+                        descEl.innerText = job.description;
+                    } else {
+                        descEl.innerText = "No description provided.";
+                    }
+
+                } catch (err) {
+                    console.error("Fetch Error:", err);
+                    roleEl.innerText = "Failed to load job details";
+                }
+            }
+
+            fetchJobDetails();
+
+
+
+            document.getElementById("applyForm").addEventListener("submit", async function (e) {
                 e.preventDefault();
-                document.getElementById("formStatus").innerText = "Your application has been submitted successfully!";
+                const statusEl = document.getElementById("formStatus");
+                statusEl.innerText = "Processing application...";
+                statusEl.classList.remove("text-success", "text-danger");
+                statusEl.classList.add("text-info");
+
+                const resumeFile = document.getElementById("userResume").files[0];
+                const parsingURL = `https://pioneercoders.krishnamurthyedtechapi.com/api/v1/org/752/recruiter/1/resume-parsing?jobId=${jobId}`;
+
+                const formData = new FormData();
+                formData.append("orgId", "752");
+                formData.append("recruiterId", "1");
+                // Matching the curl's specific 'profile' blob requirement
+                formData.append("profile", new Blob(["undefined"], { type: "application/json" }), "blob");
+                formData.append("userResume", resumeFile);
+
+                try {
+                    const response = await fetch(parsingURL, {
+                        method: "POST",
+                        headers: {
+
+                            "Accept": "application/json, text/plain, */*",
+                            "Origin": "https://pioneercodershiringhub.com",
+                            "Referer": "https://pioneercodershiringhub.com/"
+                        },
+                        body: formData
+                    });
+
+                    if (!response.ok) throw new Error("Failed to parse resume");
+
+                    const result = await response.json();
+                    console.log("Parsing Result:", result);
+
+                    statusEl.innerText = "Application submitted successfully! Our team will get back to you.";
+                    statusEl.classList.remove("text-info");
+                    statusEl.classList.add("text-success");
+                    
+                } catch (err) {
+                    console.error("Submission Error:", err);
+                    statusEl.innerText = "Failed to submit application. Please try again.";
+                    statusEl.classList.remove("text-info");
+                    statusEl.classList.add("text-danger");
+                }
             });
         </script>
     </div>
