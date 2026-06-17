@@ -545,7 +545,7 @@
                 if (!response.ok) throw new Error("Failed to fetch jobs");
 
                 const result = await response.json();
-                
+
                 // Handling both potential structures: data: { content: [...] } or data: [...]
                 const jobs = (result.data && result.data.content) || result.data || [];
 
@@ -565,7 +565,7 @@
                 jobs.forEach(job => {
                     const skills = Array.isArray(job.skills) ? job.skills.slice(0, 3) : [];
                     const skillTags = skills.map(s => `<span class="skill-tag">${s}</span>`).join('');
-                    
+
                     container.innerHTML += `
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="premium-job-card">
@@ -598,8 +598,8 @@
                 console.error("Fetch Error:", err);
                 status.innerHTML = `
                     <div class="error-state" style="text-align:center; width:100%;">
-                        <i class="bi bi-exclamation-triangle" style="font-size: 3rem; color: #dc3545;"></i>
-                        <p style="margin-top: 20px; color: #dc3545;">Failed to load job openings. Please try refreshing the page.</p>
+                        <i class="bi bi-exclamation-triangle" style="font-size: 3rem; color: #ffffff;"></i>
+                        <p style="margin-top: 20px; color: #ffffff;">No Job Openings Available</p>
                     </div>
                 `;
             }
