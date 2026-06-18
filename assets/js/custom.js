@@ -268,6 +268,10 @@
             el: ".swiper-pagination11",
             clickable: true,
         },
+        navigation: {
+            nextEl: ".nextbtn-portfolio",
+            prevEl: ".prevbtn-portfolio",
+        },
         autoplay: {
             delay: 5000
         },
