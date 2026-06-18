@@ -28,6 +28,139 @@
     <link rel="stylesheet" href="assets/css/style2.css"> -->
     <link rel="stylesheet" href="assets/css/itsupport.css">
 
+    <!-- Toast Notification Styles -->
+    <style>
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999999 !important;
+            pointer-events: none;
+        }
+        
+        .toast-container .toast {
+            pointer-events: auto;
+        }
+        
+        .toast {
+            background: #fff !important;
+            border-radius: 8px !important;
+            padding: 16px 20px !important;
+            margin-bottom: 10px !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+            display: flex !important;
+            align-items: center !important;
+            min-width: 300px !important;
+            max-width: 400px !important;
+            animation: slideIn 0.3s ease-out !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        
+        .toast::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+        }
+        
+        .toast.success::before {
+            background: #00d084;
+        }
+        
+        .toast.error::before {
+            background: #ff4444;
+        }
+        
+        .toast-icon {
+            font-size: 24px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .toast.success .toast-icon {
+            color: #00d084;
+        }
+        
+        .toast.error .toast-icon {
+            color: #ff4444;
+        }
+        
+        .toast-content {
+            flex: 1;
+        }
+        
+        .toast-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #333;
+        }
+        
+        .toast-message {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+        
+        .toast-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #999;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 12px;
+            line-height: 1;
+        }
+        
+        .toast-close:hover {
+            color: #333;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+        
+        .toast.hiding {
+            animation: slideOut 0.3s ease-out forwards;
+        }
+        
+        .form-error {
+            border-color: #ff4444 !important;
+        }
+        
+        .error-message {
+            color: #ff4444;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+    </style>
+
     <!-- Title -->
     <title>KMSS- Krishnamurthy Software Solutions Pvt Ltd</title>
     <link rel="icon" href="assets/img/sm-logo.png" type="image/gif" sizes="20x20">
@@ -35,6 +168,8 @@
 </head>
 
 <body class="home-dark2 tt-magic-cursor">
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
     <!-- Preloader Start -->
     <!-- <div class="preloader">
         <div id="particles-background" class="vertical-centered-box"></div>
@@ -469,38 +604,36 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-20">
                                         <div class="form-inner">
-                                            <label>First Name</label>
-                                            <input type="text" id="firstName">
+                                            <label>First Name <span style="color: #ff4444;">*</span></label>
+                                            <input type="text" id="firstName" autocomplete="off">
+                                            <span class="error-message" id="firstNameError">Please enter a valid first name (letters only)</span>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-20">
                                         <div class="form-inner">
-                                            <label>Last name</label>
-                                            <input type="text" id="lastName">
+                                            <label>Last name <span style="color: #ff4444;">*</span></label>
+                                            <input type="text" id="lastName" autocomplete="off">
+                                            <span class="error-message" id="lastNameError">Please enter a valid last name (letters only)</span>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 mb-20">
                                         <div class="form-inner">
-                                            <label>Company/Organization</label>
-                                            <input type="text" id="company">
+                                            <label>Email <span style="color: #ff4444;">*</span></label>
+                                            <input type="text" id="email" autocomplete="off">
+                                            <span class="error-message" id="emailError">Please enter a valid email address</span>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 mb-20">
                                         <div class="form-inner">
-                                            <label>Email</label>
-                                            <input type="email" id="email">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 mb-20">
-                                        <div class="form-inner">
-                                            <label>Phone</label>
-                                            <input type="number" id="phone">
+                                            <label>Phone <span style="color: #ff4444;">*</span></label>
+                                            <input type="text" id="phone" maxlength="10" autocomplete="off">
+                                            <span class="error-message" id="phoneError">Please enter a valid 10-digit phone number</span>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 mb-20">
                                         <div class="form-inner">
                                             <label>Message</label>
-                                            <textarea></textarea>
+                                            <textarea id="message"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
