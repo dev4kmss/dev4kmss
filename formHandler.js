@@ -113,6 +113,12 @@ $(document).ready(function () {
     }
   });
 
+  $('#message').on('input', function() {
+    if ($(this).val().trim()) {
+      clearFieldError('message', 'messageError');
+    }
+  });
+
   $("#myForm").on("submit", function (event) {
     event.preventDefault();
 
@@ -165,7 +171,11 @@ $(document).ready(function () {
       isValid = false;
     }
 
-    // Validate message (optional field, no error shown)
+    // Validate message
+    if (!message) {
+      showFieldError('message', 'messageError', 'Message is required');
+      isValid = false;
+    }
     
     if (!isValid) {
       showToast('Please fill in all required fields correctly', 'error', 'Validation Error');
